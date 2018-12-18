@@ -1,0 +1,30 @@
+#version 330 core
+
+// input data
+in vec4 fragmentColor;
+in vec2 TexCoord;
+
+// Ouput data
+out vec4 color;
+
+
+//texture sampler
+uniform sampler2D myTextureSampler;
+uniform int RenderingMode;
+void main()
+{ 
+
+	//1) calculate fragment color from sent color only.
+	if(RenderingMode == 0)
+		color = fragmentColor;
+	
+	//2) calculate fragment color from sample extracted by the sampler.
+	if(RenderingMode == 1)
+		color = texture( myTextureSampler, TexCoord ).rgba;
+	//3) calculate fragment color by combining the fragment color and the texture sample.
+	if(RenderingMode == 2)
+		color = texture(myTextureSampler, TexCoord).rgba + fragmentColor;
+		if(color.a < 0.1)
+		discard;
+	
+}

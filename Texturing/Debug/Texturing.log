@@ -1,0 +1,10 @@
+﻿  Renderer.cpp
+c:\users\pc\documents\mo3eda\texturing\renderer\renderer.cpp(527): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\pc\documents\mo3eda\texturing\renderer\renderer.cpp(532): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\pc\documents\mo3eda\texturing\renderer\renderer.cpp(538): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\pc\documents\mo3eda\texturing\renderer\renderer.cpp(544): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\pc\documents\mo3eda\texturing\renderer\renderer.cpp(559): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\pc\documents\mo3eda\texturing\renderer\renderer.cpp(560): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+ApplicationManager.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/INCREMENTAL:NO' specification
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  Texturing.vcxproj -> C:\Users\pc\Documents\mo3eda\Debug\Texturing.exe
