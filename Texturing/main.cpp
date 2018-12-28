@@ -10,7 +10,7 @@ int main(void)
 	std::unique_ptr<ApplicationManager> appManager (new ApplicationManager(openGLMajorVersion,openGLMinorVersion));
 	
 	// Initialize the window providing its width and height
-	if(appManager->InitalizeApplication(700,700) == true)
+	if(appManager->InitalizeApplication(800,600) == true)
 	{
 		
 		

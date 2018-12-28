@@ -1,10 +1,31 @@
-﻿  Renderer.cpp
-c:\users\pc\documents\mo3eda\texturing\renderer\renderer.cpp(527): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\pc\documents\mo3eda\texturing\renderer\renderer.cpp(532): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\pc\documents\mo3eda\texturing\renderer\renderer.cpp(538): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\pc\documents\mo3eda\texturing\renderer\renderer.cpp(544): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\pc\documents\mo3eda\texturing\renderer\renderer.cpp(559): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\pc\documents\mo3eda\texturing\renderer\renderer.cpp(560): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+﻿  ApplicationManager.cpp
+e:\projects\pizza-lover-game\texturing\application manager\applicationmanager.cpp(145): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+  EulerCamera.cpp
+  FPCamera.cpp
+e:\projects\pizza-lover-game\texturing\fpcamera\fpcamera.cpp(28): warning C4305: 'initializing': truncation from 'double' to 'float'
+  main.cpp
+  Model.cpp
+  Renderer.cpp
+c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\auxiliary\vs\include\gl\glfw3.h(98): note: see previous definition of 'APIENTRY'
+e:\projects\pizza-lover-game\texturing\renderer\renderer.cpp(752): warning C4305: 'argument': truncation from 'double' to 'float'
+e:\projects\pizza-lover-game\texturing\renderer\renderer.cpp(757): warning C4305: 'argument': truncation from 'double' to 'float'
+e:\projects\pizza-lover-game\texturing\renderer\renderer.cpp(763): warning C4305: 'argument': truncation from 'double' to 'float'
+e:\projects\pizza-lover-game\texturing\renderer\renderer.cpp(769): warning C4305: 'argument': truncation from 'double' to 'float'
+e:\projects\pizza-lover-game\texturing\renderer\renderer.cpp(784): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+e:\projects\pizza-lover-game\texturing\renderer\renderer.cpp(785): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  shader.cpp
+  texture.cpp
+  Generating Code...
+  stb_image.c
+e:\projects\pizza-lover-game\texturing\texture\texture loader\stb_image.c(300): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+e:\projects\pizza-lover-game\texturing\texture\texture loader\stb_image.c(362): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+e:\projects\pizza-lover-game\texturing\texture\texture loader\stb_image.c(400): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+e:\projects\pizza-lover-game\texturing\texture\texture loader\stb_image.c(4293): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
 ApplicationManager.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/INCREMENTAL:NO' specification
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-  Texturing.vcxproj -> C:\Users\pc\Documents\mo3eda\Debug\Texturing.exe
+  Texturing.vcxproj -> E:\Projects\Pizza-Lover-Game\Debug\Texturing.exe

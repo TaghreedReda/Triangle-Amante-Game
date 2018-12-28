@@ -27,8 +27,30 @@ public:
 	glm::mat4 mProjectionMatrix;
 
 	//to know current location.
+#pragma region new_stuff
+
 	int MxPosition;
 	int MzPosition;
+
+	//monster.
+	bool reachedHero;
+	
+	//hero
+	bool wentin1;
+	bool wentin2;
+	bool wentin3;
+	bool wentin4;
+	bool wentin5;
+	bool wentin6;
+	bool wentin7;
+	bool wentin8;
+	bool wentin9;
+	bool wentin10;
+
+	//games
+	int Score;
+
+#pragma endregion
 
 	Model();
 	~Model();

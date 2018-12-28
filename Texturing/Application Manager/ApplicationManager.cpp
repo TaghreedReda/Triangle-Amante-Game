@@ -64,8 +64,8 @@ bool ApplicationManager::InitalizeApplication(int pWindowSizeWidth, int pWindowS
 	//initialize a value for the mouse position.
 	MouseXPos = WindowSizeWidth/2;
 	MouseYPos = WindowSizeHeight/2;
-	//glfwSetCursorPos(mWindow,MouseXPos,MouseYPos);
-	//glfwSetCursorPosCallback(mWindow, &this->MouseMoved);
+	glfwSetCursorPos(mWindow,MouseXPos,MouseYPos);
+	glfwSetCursorPosCallback(mWindow, &this->MouseMoved);
 	
 	//////////////////////////////////////////////////////////////////////////
 	// Enable depth test
@@ -107,10 +107,10 @@ void ApplicationManager::StartMainLoop()
 		{
 			mRenderer->HandleKeyboardInput(KeyPressed);
 			//reset the pressed key.
-			KeyPressed = -1;
+			//KeyPressed = -1;
 		}
 		
-		// check if a mouse moved
+		// check if a mouse movedf
 		if (ApplicationManager::MouseXPos != ApplicationManager::WindowSizeWidth/2
 		 || ApplicationManager::MouseYPos != ApplicationManager::WindowSizeHeight/2)
 		{
@@ -166,9 +166,9 @@ void ApplicationManager::SpecialKeyPressed(GLFWwindow* window, int key, int scan
 // Mouse movement event
 void ApplicationManager::MouseMoved(GLFWwindow* window, double xpos, double ypos)
 {
-	//set the new mouse position to the MousXPos and MousYPos
-	 ApplicationManager::MouseXPos = xpos;
-	 ApplicationManager::MouseYPos = ypos;
+	 //set the new mouse position to the MousXPos and MousYPos
+	// ApplicationManager::MouseXPos = xpos;
+	 //ApplicationManager::MouseYPos = ypos;
 }
 
 // Window resizing event
@@ -186,6 +186,6 @@ void ApplicationManager::Update()
 	double deltaTime = (currentTime - mTime)*1000; //subtract the previous recorded time (mTime value)* 1000 to convert from nanoseconds to seconds.
 	mTime = currentTime; //set the mTime with current (for calculating the next frame)
 
-	mRenderer->Update(deltaTime);
+	mRenderer->Update();
 
 }
