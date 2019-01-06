@@ -8,6 +8,10 @@
 #include <cstdio>
 #include <ctime>
 
+
+
+
+
 Renderer::Renderer()
 {
 	
@@ -23,7 +27,8 @@ void Renderer::Initialize()
 	done = false;
 	myCamera = unique_ptr<EulerCamera>(new EulerCamera());
 	
-
+	//mciSendString
+	//mciSendString("open \"GameOver.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
 	// skybox
 	skybox = unique_ptr<Model>(new Model());
 	skybox->VertexData.push_back(vec3(-1.0f, -1.0f, -2.0f));
@@ -279,9 +284,12 @@ void Renderer::Initialize()
 	
 	floorM = translate(0.0f, -0.1f, -0.0f)* scale(3.0f,3.0f,3.0f)*rotate(90.0f,vec3(1.0f,0.0f,0.0f));
 	
-	cal_time = false;
+	/*cal_time = false;
 	timestart= false;
-	duration = 0;
+	duration = 0;*/
+
+	duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+	//cal_time = true;
     
 }
 
@@ -396,7 +404,7 @@ void Renderer::Draw()
 
 		mat4 skyMVPfront = VP * skyboxFM;
 		glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &skyMVPfront[0][0]);
-		skybox->Draw();
+	//	skybox->Draw();
 
 
 
@@ -460,9 +468,9 @@ void Renderer::Draw()
 		//	myTriangle->Draw();
 		//}
 
-#pragma endregion
+#pragma endregion monster textuers
 
-		//monster
+		
 		if (monsF == true && monsB == false && monsR == false && monsL == false) {
 			monsterFrontTexture->Bind();
 		}
@@ -471,6 +479,9 @@ void Renderer::Draw()
 		}
 		else if (monsF == false && monsB == false && monsR == true && monsL == false) {
 			monsterRightTexture->Bind();
+		}
+		else if (monsF == false && monsB ==true && monsR == false && monsL == false) {
+			monsterBackTexture ->Bind();
 		}
 
 		monsterMVPFront = VP * monsterFM;
@@ -488,7 +499,7 @@ void Renderer::Draw()
 		mRenderingMode = RenderingMode::TEXTURE_ONLY;
 		glUniform1i(mRenderingModeID,mRenderingMode);
 
-		if (timestart)
+		/*if (timestart)
 		{
 
 			start = std::clock();
@@ -500,7 +511,7 @@ void Renderer::Draw()
 		{
 			duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
 			cout << "Duration = " << duration << endl;
-		}
+		}*/
 }
 
 void Renderer::Cleanup()
@@ -522,27 +533,36 @@ void Renderer::Update()
 	if (monsterMVPFront[3][0] > herofrontMVP[3][0])
 	{
 		onleft = true;
+		monsF = false, monsB = false, monsR = false, monsL = true;
 	}
 
 	else  if (monsterMVPFront[3][0] < herofrontMVP[3][0])
 	{
 		onRight = true;
+		monsF = false, monsB = false, monsR = true, monsL = false;
 	}
 
 	 if (monsterMVPFront[3][2] < herofrontMVP[3][2])
 	{
 		below = true;
+		monsF = false, monsB = true, monsR = false, monsL = false;
 	}
 
 	else if (monsterMVPFront[3][2] > herofrontMVP[3][2])
 	{
 		above = true;
+	    monsF = true, monsB = false, monsR = false, monsL = false;
 	}
 	
 	if ((ceil((monsterMVPFront[3][2] * 10)) / 10) == (ceil((herofrontMVP[3][2] * 10)) / 10) && (ceil((monsterMVPFront[3][0] * 10)) / 10) == (ceil((herofrontMVP[3][0] * 10)) / 10))
 	{
+		
+		//PlaySound(TEXT("recycle.wav"), NULL, SND_FILENAME | SND_ASYNC);
+		PlaySound(TEXT("GameOver.wav"), NULL, SND_FILENAME | SND_ASYNC);
 		cout << "you are DEAD GAME OVER ";
 		cout << "\n\n Final Score: " << hero->Score << "\n\n\n";
+		heroF = false, heroB = false, heroR = false, heroL=false;
+		
 		done = true;
 	}
 
@@ -557,53 +577,82 @@ void Renderer::Update()
 		if (onleft)
 		{
 			monsterFM = monsterFM * translate(-0.01f, 0.0f, 0.0f);
-			monsF = false, monsB = false, monsR = false, monsL =true;
+			//monsF = false, monsB = false, monsR = false, monsL =true;
 		}
 
 		if (onRight)
 		{
 			monsterFM = monsterFM * translate(0.01f, 0.0f, 0.0f);
-			monsF = false, monsB = false, monsR =true, monsL = false;
+			//monsf = false, monsB = false, monsR =true, monsL = false;
 		}
 
 		if (below)
 		{
 			monsterFM = monsterFM * translate(0.00f, 0.0f, -0.01f);
+			//monsf = false, monsB = true, monsR = false, monsL = false;
 		}
 		if (above)
 		{
 			monsterFM = monsterFM * translate(0.0f, 0.0f, 0.01f);
 			
-			monsF = true, monsB = false, monsR = false, monsL = false;
+			//monsf = true, monsB = false, monsR = false, monsL = false;
 		}
 
 		
 	}
 
-	else if(true)
+	else if(duration > 20)
 	{
 		//level 3
 		if (onleft)
 		{
 			monsterFM = monsterFM * translate(-0.02f, 0.0f, 0.0f);
-			monsF = false, monsB = false, monsR = false, monsL = true;
+			//monsf = false, monsB = false, monsR = false, monsL = true;
 		}
 
 		if (onRight)
 		{
 			monsterFM = monsterFM * translate(0.02f, 0.0f, 0.0f);
-			monsF = false, monsB = false, monsR = true, monsL = false;
+			//monsf = false, monsB = false, monsR = true, monsL = false;
 		}
 
 		if (below)
 		{
 			monsterFM = monsterFM * translate(0.00f, 0.0f, -0.02f);
+			 //monsf = false, monsB = true, monsR = false, monsL = false;
 		}
 
 		if (above)
 		{
 			monsterFM = monsterFM * translate(0.0f, 0.0f, 0.02f);
-			monsF = true, monsB = false, monsR = false, monsL = false;
+			//monsf = true, monsB = false, monsR = false, monsL = false;
+		}
+	}
+	else if (duration > 30)
+	{
+		//level 3
+		if (onleft)
+		{
+			monsterFM = monsterFM * translate(-0.03f, 0.0f, 0.0f);
+			//monsf = false, monsB = false, monsR = false, monsL = true;
+		}
+
+		if (onRight)
+		{
+			monsterFM = monsterFM * translate(0.03f, 0.0f, 0.0f);
+			//monsf = false, monsB = false, monsR = true, monsL = false;
+		}
+
+		if (below)
+		{
+			monsterFM = monsterFM * translate(0.00f, 0.0f, -0.03f);
+			//monsf = false, monsB = true, monsR = false, monsL = false;
+		}
+
+		if (above)
+		{
+			monsterFM = monsterFM * translate(0.0f, 0.0f, 0.03f);
+			//monsf = true, monsB = false, monsR = false, monsL = false;
 		}
 	}
 }
