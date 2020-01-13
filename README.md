@@ -1,1 +1,1 @@
-# Pizza-Lover-Game
+action game implemented using opengl , the hero has to survive at each level and escapes from the monster while trying to collect the triangles he loves and being careful not to fall down in the outer space or let the wall obstructs him from moving  .
